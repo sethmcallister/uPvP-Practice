@@ -2,6 +2,7 @@ package us.upvp.practice;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import us.upvp.api.API;
 import us.upvp.api.internal.command.CommandListener;
@@ -67,7 +68,7 @@ public class Practice extends PluginModule
 
         this.matchHandler = new MatchHandler();
         this.arenaHandler = new ArenaHandler();
-        this.entityHider = new EntityHider(null, EntityHider.Policy.BLACKLIST);
+        this.entityHider = new EntityHider((Plugin) API.getPlugin(), EntityHider.Policy.BLACKLIST);
         this.partyHandler = new PartyHandler();
         this.lobbyInventory = new LobbyInventory();
         this.deathInventoryHandler = new DeathInventoryHandler();
@@ -88,7 +89,7 @@ public class Practice extends PluginModule
             {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kb 0.95 3.1E-7 0.95");
             }
-        }.runTaskLater(null, 2 * 20L);
+        }.runTaskLater((Plugin) API.getPlugin(), 2 * 20L);
 
         getCommandListeners().addAll(setupCommands());
         getEventListeners().addAll(setupListeners());
