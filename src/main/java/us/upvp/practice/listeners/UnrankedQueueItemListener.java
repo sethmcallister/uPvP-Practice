@@ -2,15 +2,15 @@ package us.upvp.practice.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import us.upvp.api.framework.listeners.UPvPListener;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.practice.Practice;
 
 /**
  * Created by Seth on 09/04/2017.
  */
-public class UnrankedQueueItemListener extends UPvPListener
+public class UnrankedQueueItemListener implements Listener
 {
     @EventHandler
     public void InventoryClickEvent(InventoryClickEvent event)

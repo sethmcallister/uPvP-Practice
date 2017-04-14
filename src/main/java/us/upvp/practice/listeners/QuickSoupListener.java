@@ -3,14 +3,14 @@ package us.upvp.practice.listeners;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import us.upvp.api.framework.listeners.UPvPListener;
 
 /**
  * Created by Seth on 09/04/2017.
  */
-public class QuickSoupListener extends UPvPListener
+public class QuickSoupListener implements Listener
 {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event)

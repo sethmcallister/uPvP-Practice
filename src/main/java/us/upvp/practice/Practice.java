@@ -2,12 +2,13 @@ package us.upvp.practice;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import us.upvp.api.API;
 import us.upvp.api.internal.command.CommandListener;
-import us.upvp.api.internal.event.EventListener;
 import us.upvp.api.internal.module.PluginModule;
+import us.upvp.api.internal.module.PluginModuleConfig;
 import us.upvp.practice.command.*;
 import us.upvp.practice.entities.EntityHider;
 import us.upvp.practice.handlers.*;
@@ -25,38 +26,28 @@ public class Practice extends PluginModule
 {
     private static Practice instance;
     private List<CommandListener> commands;
-    private List<EventListener> listeners;
+    private List<Listener> listeners;
 
-    @Getter
-    private MatchHandler matchHandler;
-    @Getter
-    private ArenaHandler arenaHandler;
-    @Getter
-    private EntityHider entityHider;
-    @Getter
-    private PartyHandler partyHandler;
-    @Getter
-    private LobbyInventory lobbyInventory;
-    @Getter
-    private DeathInventoryHandler deathInventoryHandler;
-    @Getter
-    private DuelHandler duelHandler;
-    @Getter
-    private DuelInventory duelInventory;
-    @Getter
-    private KitHandler kitHandler;
-    @Getter
-    private PartyInventory partyInventory;
-    @Getter
-    private PartyDuelInventory partyDuelInventory;
-    @Getter
-    private UnrankedInventory unrankedInventory;
-    @Getter
-    private RankedInventory rankedInventory;
-    @Getter
-    private QueueManager queueManager;
-    @Getter
-    private ScoreboardHandler scoreboardHandler;
+    @Getter private MatchHandler matchHandler;
+    @Getter private ArenaHandler arenaHandler;
+    @Getter private EntityHider entityHider;
+    @Getter private PartyHandler partyHandler;
+    @Getter private LobbyInventory lobbyInventory;
+    @Getter private DeathInventoryHandler deathInventoryHandler;
+    @Getter private DuelHandler duelHandler;
+    @Getter private DuelInventory duelInventory;
+    @Getter private KitHandler kitHandler;
+    @Getter private PartyInventory partyInventory;
+    @Getter private PartyDuelInventory partyDuelInventory;
+    @Getter private UnrankedInventory unrankedInventory;
+    @Getter private RankedInventory rankedInventory;
+    @Getter private QueueManager queueManager;
+    @Getter private ScoreboardHandler scoreboardHandler;
+
+    public Practice(PluginModuleConfig config)
+    {
+        super("Practice", config);
+    }
 
 
     @Override
@@ -91,18 +82,20 @@ public class Practice extends PluginModule
             }
         }.runTaskLater((Plugin) API.getPlugin(), 2 * 20L);
 
-        getCommandListeners().addAll(setupCommands());
-        getEventListeners().addAll(setupListeners());
-    }
+        setupListeners();
 
-    //TODO Wout make the fucking api#getPlugin() methods ;)
+        for(Listener listener : listeners)
+            Bukkit.getPluginManager().registerEvents(listener, (Plugin) API.getPlugin());
+
+        getCommandListeners().addAll(setupCommands());
+    }
 
     public static Practice getInstance()
     {
         return instance;
     }
 
-    public List<CommandListener> setupCommands()
+    private List<CommandListener> setupCommands()
     {
         this.commands.add(new AcceptCommand());
         this.commands.add(new DuelCommand());
@@ -112,7 +105,7 @@ public class Practice extends PluginModule
         return commands;
     }
 
-    public List<EventListener> setupListeners()
+    private void setupListeners()
     {
         this.listeners.add(new ChestAccessListner());
         this.listeners.add(new EnderpearlListener());
@@ -126,6 +119,5 @@ public class Practice extends PluginModule
         this.listeners.add(new QuickSoupListener());
         this.listeners.add(new RankedQueueItemListener());
         this.listeners.add(new UnrankedQueueItemListener());
-        return this.listeners;
     }
 }

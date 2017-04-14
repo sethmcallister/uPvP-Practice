@@ -2,9 +2,9 @@ package us.upvp.practice.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import us.upvp.api.framework.listeners.UPvPListener;
 import us.upvp.practice.Practice;
 import us.upvp.practice.match.Match;
 import us.upvp.practice.match.party.Party;
@@ -12,7 +12,7 @@ import us.upvp.practice.match.party.Party;
 /**
  * Created by Seth on 09/04/2017.
  */
-public class EntityDamageListener extends UPvPListener
+public class EntityDamageListener implements Listener
 {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event)

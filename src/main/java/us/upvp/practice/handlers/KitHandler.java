@@ -5,7 +5,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 
 /**
  * Created by Seth on 09/04/2017.

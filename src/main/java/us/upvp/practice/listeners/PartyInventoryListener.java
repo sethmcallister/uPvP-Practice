@@ -4,12 +4,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import us.upvp.api.framework.listeners.UPvPListener;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.practice.Practice;
 import us.upvp.practice.events.SendToSpawnEvent;
 import us.upvp.practice.match.duel.Duel;
@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Seth on 09/04/2017.
  */
-public class PartyInventoryListener extends UPvPListener
+public class PartyInventoryListener implements Listener
 {
     private ConcurrentHashMap<Player, Party> toDuel;
 

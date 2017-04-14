@@ -4,9 +4,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import us.upvp.api.framework.listeners.UPvPListener;
 import us.upvp.practice.Practice;
 import us.upvp.practice.match.Match;
 
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Seth on 09/04/2017.
  */
-public class EnderpearlListener extends UPvPListener
+public class EnderpearlListener implements Listener
 {
     private static ConcurrentHashMap<String, Long> enderpearlcooldown = new ConcurrentHashMap<>();
 

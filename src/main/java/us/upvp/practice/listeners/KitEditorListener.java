@@ -2,16 +2,16 @@ package us.upvp.practice.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import us.upvp.api.framework.listeners.UPvPListener;
 import us.upvp.practice.Practice;
 
 /**
  * Created by Seth on 09/04/2017.
  */
-public class KitEditorListener extends UPvPListener
+public class KitEditorListener implements Listener
 {
     @EventHandler
     public void onItemClick(PlayerInteractEvent event)

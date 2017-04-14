@@ -2,17 +2,17 @@ package us.upvp.practice.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import us.upvp.api.framework.listeners.UPvPListener;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.practice.Practice;
 
 /**
  * Created by Seth on 09/04/2017.
  */
-public class KitSelectListener extends UPvPListener
+public class KitSelectListener implements Listener
 {
     @EventHandler
     public void onKitSelection(PlayerInteractEvent event)

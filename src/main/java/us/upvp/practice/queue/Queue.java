@@ -9,9 +9,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import us.upvp.api.API;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.practice.Practice;
 import us.upvp.practice.match.Match;
 
@@ -108,7 +109,7 @@ public class Queue implements Listener
                     if (!queue.containsKey(player))
                         this.cancel();
                 }
-            }.runTaskTimer(API.getPlugin(), 0L, 20L);
+            }.runTaskTimer((Plugin) API.getPlugin(), 0L, 20L);
         }
         else
         {
@@ -133,7 +134,7 @@ public class Queue implements Listener
                         return;
                     }
                 }
-            }.runTaskTimer(API.getPlugin(), 0L, 20L);
+            }.runTaskTimer((Plugin) API.getPlugin(), 0L, 20L);
         }
     }
 

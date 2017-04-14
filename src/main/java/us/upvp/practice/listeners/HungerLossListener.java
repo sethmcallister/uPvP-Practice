@@ -4,16 +4,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
-import us.upvp.api.framework.listeners.UPvPListener;
 import us.upvp.practice.Practice;
 
 /**
  * Created by Seth on 09/04/2017.
  */
-public class HungerLossListener extends UPvPListener
+public class HungerLossListener implements Listener
 {
     @EventHandler
     public void onHungerLoss(FoodLevelChangeEvent event)

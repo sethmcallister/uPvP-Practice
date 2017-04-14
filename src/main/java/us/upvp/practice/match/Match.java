@@ -23,10 +23,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import us.upvp.api.API;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.api.framework.user.User;
 import us.upvp.practice.entities.EntityHider;
 import us.upvp.practice.events.SendToSpawnEvent;
@@ -78,7 +79,7 @@ public class Match implements Listener
         this.timeStarted = System.currentTimeMillis();
         this.start();
         getInstance().getMatchHandler().addMatch(this);
-        Bukkit.getPluginManager().registerEvents(this, API.getPlugin());
+        Bukkit.getPluginManager().registerEvents(this, (Plugin) API.getPlugin());
     }
 
     public Match(Party party1, Party party2, Ladder ladder)
@@ -97,7 +98,7 @@ public class Match implements Listener
         this.timeStarted = System.currentTimeMillis();
         startParty();
         getInstance().getMatchHandler().addMatch(this);
-        Bukkit.getPluginManager().registerEvents(this, API.getPlugin());
+        Bukkit.getPluginManager().registerEvents(this, (Plugin) API.getPlugin());
     }
 
     private void start()
@@ -171,7 +172,7 @@ public class Match implements Listener
                 sendMessage("&aStarting in &e" + i + "&a.");
                 i--;
             }
-        }.runTaskTimerAsynchronously(API.getPlugin(), 0L, 20L);
+        }.runTaskTimerAsynchronously((Plugin) API.getPlugin(), 0L, 20L);
     }
 
     private void startParty()
@@ -233,7 +234,7 @@ public class Match implements Listener
                 sendMessage("&aStarting in &e" + i + "&a.");
                 i--;
             }
-        }.runTaskTimerAsynchronously(API.getPlugin(), 0L, 20L);
+        }.runTaskTimerAsynchronously((Plugin) API.getPlugin(), 0L, 20L);
     }
 
     @EventHandler
@@ -336,7 +337,7 @@ public class Match implements Listener
             }
         }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(API.getPlugin(), () -> event.getItemDrop().remove(), 4 * 20L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) API.getPlugin(), () -> event.getItemDrop().remove(), 4 * 20L);
     }
 
     @EventHandler
@@ -496,7 +497,7 @@ public class Match implements Listener
                         }
                     }
                 }
-            }.runTaskLater(API.getPlugin(), 2 * 20L);
+            }.runTaskLater((Plugin) API.getPlugin(), 2 * 20L);
             getInstance().getMatchHandler().removeMatch(this);
             HandlerList.unregisterAll(this);
         }
@@ -580,7 +581,7 @@ public class Match implements Listener
                         }
                     }
                 }
-            }.runTaskLater(API.getPlugin(), 2 * 20L);
+            }.runTaskLater((Plugin) API.getPlugin(), 2 * 20L);
         }
         getInstance().getMatchHandler().removeMatch(this);
     }

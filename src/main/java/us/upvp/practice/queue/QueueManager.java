@@ -2,8 +2,9 @@ package us.upvp.practice.queue;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import us.upvp.api.API;
-import us.upvp.api.framework.practice.Ladder;
+import us.upvp.api.framework.server.practice.Ladder;
 import us.upvp.api.framework.user.User;
 
 import java.util.HashSet;
@@ -27,7 +28,7 @@ public class QueueManager
         }
 
         for (Queue queue : this.queues)
-            Bukkit.getPluginManager().registerEvents(queue, API.getPlugin());
+            Bukkit.getPluginManager().registerEvents(queue, (Plugin) API.getPlugin());
     }
 
     private Queue getQueue(Predicate<Queue> test)
